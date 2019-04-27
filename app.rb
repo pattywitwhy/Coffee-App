@@ -1,30 +1,31 @@
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sinatra/activerecord'
+
+current_dir = Dir.pwd
+Dir["#{current_dir}/models/*.rb"].each { |file| require file }
+
 
 get '/' do
+  @drinks = Drink.all
   erb :index
 end
 
-get "/espresso" do
-  erb:espresso
+
+get '/drinks/new' do
+  erb :new
 end
 
-get "/cappucino" do
-  erb:cappucino
+post "/drinks/new" do
+  drink = Drink.create(
+                        name: params[:name],
+                        contents: params[:contents],
+                        image: params[:image]
+                      )
+  redirect to("/drinks/#{drink.id}")
 end
 
-get "/americano" do
-  erb:americano
-end
-
-get "/latte" do
-  erb:latte
-end
-
-get "/mocha" do
-  erb:mocha
-end
-
-get "/macchiato" do
-  erb:macchiato
+get "/drinks/:id" do
+  @drink = Drink.find(params[:id])
+  erb :show
 end

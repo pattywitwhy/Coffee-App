@@ -6,4 +6,4 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'rake'
 gem 'activerecord'
-gem 'sinatra-activerecord'
+gem 'sinatra-activerecord't
