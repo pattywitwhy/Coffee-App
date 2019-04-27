@@ -15,7 +15,7 @@ get '/drinks/new' do
   erb :new
 end
 
-post "/drinks/new" do
+post '/drinks' do
   drink = Drink.create(
                         name: params[:name],
                         contents: params[:contents],
@@ -24,9 +24,14 @@ post "/drinks/new" do
   redirect to("/drinks/#{drink.id}")
 end
 
-get "/drinks/:id" do
+get '/drinks/:id' do
   @drink = Drink.find(params[:id])
   erb :show
+end
+
+delete '/drinks/:id' do
+  drink = Drink.delete(params[:id])
+  redirect to('/')
 end
 
 namespace "/api" do
