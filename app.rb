@@ -30,8 +30,9 @@ get '/drinks/:id' do
 end
 
 delete '/drinks/:id' do
-  drink = Drink.delete(params[:id])
-  redirect to('/')
+  @drink = Drink.find(params[:id])
+  @drink.destroy
+  redirect to '/'
 end
 
 namespace "/api" do

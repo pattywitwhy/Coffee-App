@@ -7,6 +7,7 @@
   <img src="<%= @drink.image %>">
 </div>
 
-<form action="/" method="delete">
+<form action="/drinks/<%= @drink.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Drink">
 </form>
