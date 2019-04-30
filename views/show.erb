@@ -1,13 +1,28 @@
-<a href="/">Menu</a>
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="/style.css">
+<head>
+  <a href="/">Drink Menu</a>
 
-<h1><%= @drink.name %></h1>
-<h4>Contents: <%= @drink.contents %></h4>
+  <h1><%= @drink.name %></h1>
+</head>
+<body>
 
-<div>
-  <img src="<%= @drink.image %>">
-</div>
 
-<form action="/drinks/<%= @drink.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Drink">
-</form>
+  <h4>Contents: <%= @drink.contents %></h4>
+
+  <div>
+    <img src="<%= @drink.image %>">
+  </div>
+
+  <form action="/drinks/<%= @drink.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Drink">
+  </form>
+
+</body>
+</html>
+
+<style>
+
+</style>
